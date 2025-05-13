@@ -13,8 +13,9 @@ This application uses a RandomForest model trained on bank customer data to pred
 - **Streamlit Frontend** - User-friendly interface for inputs and visualizations
 
 ## 📱 Application Interface
-Link UI https://bank-churn-prediction-ml.streamlit.app/ 
-**without backend ! **
+- Link UI [https://bank-churn-prediction-ml.streamlit.app/]
+
+**Without backend API**⚠️
 
 ### Input Form
 ![Application Input Interface](docs/app2.png)
