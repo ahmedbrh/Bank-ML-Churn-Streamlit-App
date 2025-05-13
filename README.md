@@ -12,13 +12,6 @@ This application uses a RandomForest model trained on bank customer data to pred
 - **FastAPI Backend** - Serves predictions through a REST API
 - **Streamlit Frontend** - User-friendly interface for inputs and visualizations
 
-## 🔍 Features
-
-- Customer churn prediction with probability estimation
-- Interactive dashboard with feature importance visualization
-- Risk analysis with key factor identification
-- Support for multiple currencies (EUR)
-- Multilingual support (English and French)
 
 
 ### Prerequisites
