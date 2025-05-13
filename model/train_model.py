@@ -8,7 +8,12 @@ import joblib
 import os
 
 def load_and_preprocess_data():
-    data = pd.read_csv('data/bank_customer_churn.csv')
+    data = pd.read_csv('data/Churn_Modelling.csv')
+    
+    # Convert USD to EUR (approximate conversion)
+    usd_to_eur = 0.91
+    data['Balance'] = data['Balance'] * usd_to_eur
+    data['EstimatedSalary'] = data['EstimatedSalary'] * usd_to_eur
     
     le = LabelEncoder()
     data['Geography'] = le.fit_transform(data['Geography'])
@@ -34,15 +39,15 @@ def train_model():
     
     y_pred = model.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)
-    print(f"Test Accuracy: {accuracy:.2f}")
-    print("\nClassification Report:")
+    print(f"Précision du test : {accuracy:.2f}")
+    print("\nRapport de classification :")
     print(classification_report(y_test, y_pred))
     
     feature_importance = pd.DataFrame({
         'feature': feature_columns,
         'importance': model.feature_importances_
     }).sort_values('importance', ascending=False)
-    print("\nFeature Importance:")
+    print("\nImportance des caractéristiques :")
     print(feature_importance)
     
     os.makedirs('model', exist_ok=True)
@@ -53,7 +58,7 @@ def train_model():
         'feature_importance': feature_importance.to_dict('records')
     }
     joblib.dump(model_data, 'model/model.joblib')
-    print("\nModel and metadata saved to model/model.joblib")
+    print("\nModèle et métadonnées sauvegardés dans model/model.joblib")
 
 if __name__ == "__main__":
     train_model() 
