@@ -7,8 +7,20 @@ import pandas as pd
 API_URL = "http://localhost:8000/predict"
 
 st.set_page_config(layout="wide")
-st.title("🏦 Prédiction de Départ Client Bancaire")
+st.title("Prédiction de Départ Client Bancaire 🏦")
 st.write("Entrez les informations du client pour prédire la probabilité de départ.")
+
+# Description sur l'importance pour prédire le départ client
+with st.expander("Pourquoi prédire le départ des clients ?", expanded=False):
+    st.markdown("""
+    *Prédire le départ des clients bancaires est crucial pour plusieurs raisons :*
+    
+    - **Rentabilité** : Acquérir un nouveau client coûte 5 à 25 fois plus cher que de fidéliser un client existant.
+    - **Prévention** : Identifier les clients à risque permet d'agir de manière proactive pour les retenir.
+    - **Personnalisation** : Comprendre les facteurs de risque aide à proposer des solutions adaptées.
+    - **Optimisation** : Concentrer les efforts de fidélisation sur les clients les plus susceptibles de partir.
+    
+   """)
 
 with st.form("churn_form"):
     col1, col2 = st.columns(2)
@@ -17,11 +29,11 @@ with st.form("churn_form"):
         age = st.slider("Âge", min_value=18, max_value=100, value=35, 
                        help="Âge du client")
         gender = st.radio("Genre", ["Homme", "Femme"])
-        geography = st.selectbox("Pays", 
-                               ["France", "Allemagne", "Espagne"],
+        geography = st.selectbox("Pays 🌍", 
+                               ["🇫🇷 France", "🇩🇪 Allemagne", "🇪🇸 Espagne"],
                                help="Pays de résidence du client")
         balance = st.number_input("Solde du compte (€)", 
-                                min_value=0.0, value=10000.0, step=1000.0,
+                                min_value=0, value=10000, step=1000,
                                 help="Solde actuel du compte en euros")
     
     with col2:
@@ -149,6 +161,13 @@ if submitted:
             else:
                 st.success("Aucun facteur de risque majeur identifié")
             
+            # Recommandations basées sur la prédiction
+            st.write("### Recommandations")
+            if prediction:
+                st.error("Ce client présente un risque élevé de départ. Envisagez de prendre contact rapidement pour discuter de ses besoins et lui proposer des offres adaptées.")
+            else:
+                st.info("Ce client ne présente pas de risque immédiat de départ. Continuez à maintenir la relation commerciale et proposez des services complémentaires.")
+                
         else:
             st.error(f"Erreur API : {response.status_code} - {response.text}")
     except Exception as e:
