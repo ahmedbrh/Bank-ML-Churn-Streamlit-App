@@ -106,4 +106,4 @@ docker run -p 8000:8000 bank-churn-app
 
 **Note:**
 - If you need to retrain the model, run the training script locally and copy the resulting `model/model.joblib` into the container, or mount it as a volume.
-- The default port is 8000. You can change it by setting the `PORT` environment variable when running the container.
+- The default port is 8000. You can change it by setting the `PORT` environment variable when running the container*
