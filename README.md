@@ -1,6 +1,6 @@
 # 🏦 Bank Customer Churn Prediction App
 
-A machine learning application that predicts customer churn probability for banking customers based on demographic (🇫🇷, 🇩🇪, 🇪🇸) and account information (Annual Salary, age, balance, credit score...etc)
+A machine learning app that predicts customer churn probability for banking customers based on demographic (🇫🇷, 🇩🇪, 🇪🇸) and account information (Annual Salary, age, balance, credit score...etc)
 
 ![Workflow Diagram](docs/Bank%20Churn%20Prediction%20Sequence.png)
 
